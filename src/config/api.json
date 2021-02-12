@@ -1,0 +1,10 @@
+{
+    "url":"https://api.themoviedb.org/3/",
+    "url_popular":"movie/popular",
+    "url_movie": "movie/",
+    "api_key":"?api_key=26127a838e75b8a05a714bc53340fbf2",
+    "img": "https://image.tmdb.org/t/p/w500{movie_id}",
+    "search": "search/movie",
+    "genre": "genre/movie/list",
+    "get_by_genre": "discover/movie"
+}

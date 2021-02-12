@@ -1,0 +1,100 @@
+.home {
+    display:flex;
+    flex-direction:row; 
+    width: 100vw;
+    height: 100vh;
+    top: 7%;
+    overflow-y: scroll;
+}
+
+.sidebar {
+    background-color: #fafafa;
+    width: 13%;
+    padding: 2%;
+    height: 100vh;
+    top: 7%;
+    position: fixed;
+    z-index: 0;
+}
+
+.activated {
+    background-color: #D6EAF8;
+}
+
+.list {
+    padding: 0 0 0 20px ;
+    color: white;
+}
+
+.sub-color {
+    color: rgb(165, 165, 165);
+}
+
+.content {
+    display: inline-block;
+    padding: 7% 0 5% 5%;
+    margin-left: 13%;
+    margin-bottom: 15vh;
+    position:absolute; 
+}
+
+.movies {
+    cursor: pointer !important;;
+    width:47em;
+    z-index: 1;
+    min-height: 15em;
+}
+
+.flex {
+    flex-direction:row;
+    display:flex;
+}
+.crop {
+    width:27em;
+    overflow:hidden;
+    margin-bottom: 3%;
+    text-overflow: ellipsis; 
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /*number of lines to show*/
+    -webkit-box-orient: vertical;
+}​
+
+.resume {
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.movieDetail {
+    display: inline-block ;
+    /* height: 80em; */
+    width:50em;
+    position: relative;
+    /* background-color:lightcoral; */
+    margin-left: 60vw;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    padding: 7% 0 5% 5%;
+}
+
+.modal{
+    flex-direction:initial;
+    margin-left: 57vw;
+    position:fixed;
+    width:43em;
+    padding: 0% 10px 5% 5%;
+    margin-top: -14em;
+}
+.box_shadow {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.tags {
+    position: relative;
+    left: 20%; 
+    width:60%;
+    max-height:100px;
+}
