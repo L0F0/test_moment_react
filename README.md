@@ -1,7 +1,24 @@
 # test_moment_react
-# Getting Started with Create React App
+It's a test for Moment, which consist to create a react app, getting information from a movie API.
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Requirements
+
+Be sure to have on your machine `npm` and `node` installed
+
+## Installation
+
+To run the project start by launching the commande `npm install` to install the node packages.
+Then use the command `npm start` to launch the project.
+
+You can now your browser should automaticaly open the webpage. If not go to your browser and write `http://localhost:3000/` to see the project.
+
+## Contribution
+
+Yaniss Pheron
+
 
 ## Available Scripts
 
