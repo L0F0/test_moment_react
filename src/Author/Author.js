@@ -88,7 +88,7 @@ export default class Author extends React.Component {
                                         </a>
                                         <a href={authorData.gitlabURL} style={{ textDecoration: 'none' }}>
                                             <span class="icon has-text-black-bis is-large">
-                                                <i class="fa fa-gitlab" style={{ fontDize: '38px' }}></i>
+                                                <i class="fa fa-gitlab" style={{ fontSize: '38px' }}></i>
                                             </span>
                                         </a>
                                     </div>

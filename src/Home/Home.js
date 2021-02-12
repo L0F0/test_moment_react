@@ -1,8 +1,8 @@
 import React from "react";
-import { PropTypes } from 'react'
-import './Home.css';
+import moment from "moment";
+
 import { 
-    url, 
+    url,
     url_popular, 
     api_key,
     url_movie, 
@@ -11,9 +11,10 @@ import {
     genre,
     get_by_genre
 }  from '../config/api.json';
-import moment from "moment";
-import Loader from 'react-loader';
+import './Home.css';
+
 import load from '../assets/96x96.gif';
+import no_pic from '../assets/No_Picture.jpg'
 
 
 export default class Home extends React.Component {
@@ -76,7 +77,7 @@ export default class Home extends React.Component {
     }
 
     async getMovies(targetUrl) {
-        this.setState({loading: true})
+        this.setState({loading: true, isModal: false})
         await fetch(targetUrl)
             .then(res => res.json())
             .then((result) => {
@@ -164,7 +165,6 @@ export default class Home extends React.Component {
                 } else {
                     targetUrl = url + url_popular + api_key + '&page=' + this.state.page
                 }
-                console.log(targetUrl);
                 this.getMovies(targetUrl);
             })
         }
@@ -177,7 +177,7 @@ export default class Home extends React.Component {
                     <h4 class="title is-4">Categorie</h4>
                     <div className="list">
                         {this.state.list.map((category) => (
-                            <div onClick={ () => this.getByGenre(category.id, category.name) } style={{cursor: 'pointer', zIndex:100}}>
+                            <div onClick={ () => this.getByGenre(category.id, category.name) } style={{cursor: 'pointer'}}>
                                 <span >
                                     <h2 class="subtitle sub-color">{category.name}</h2>
                                 </span>
@@ -186,53 +186,52 @@ export default class Home extends React.Component {
                     </div>
                 </div>
                 <div className="content">
-                    
-                        {this.state.movies.length > 0 ?
-                            this.state.movies.map((movie, key) => (
-                                <div onClick={ () => this.getMovieInfo(movie.id) } className={'box movies flex ' + (movie.id == this.state.checked ? "activated" : "") } >
+                    {this.state.movies.length > 0 ?
+                        this.state.movies.map((movie, key) => (
+                            <div onClick={ () => this.getMovieInfo(movie.id) } className={'box movies flex ' + (movie.id == this.state.checked ? "activated" : "") } >
+                                <div>
                                     <div>
-                                        <div>
-                                            <h1 className="title">{ movie.original_title }</h1>
-                                        </div>
-                                        <div className='flex'>
-                                            <span class="icon">
-                                                <i class="fa fa-history"></i>
-                                            </span>
-                                            <h6 class="subtitle is-6">{moment(movie.release_date).format('LL')}</h6>
-                                        </div>
-                                        <div className="resume">
-                                            <div className="subtitle is-5 crop">{movie.overview}</div>
-                                        </div>
+                                        <h1 className="title">{ movie.original_title }</h1>
                                     </div>
-                                    <div className="flex">
-                                        <figure class="image is-128x128">
-                                            {movie.poster_path ? 
-                                            <img src={this.getImage(movie.poster_path)}/>
-                                            : <img src={load}/>
-                                            }
-                                        </figure>
+                                    <div className='flex'>
+                                        <span class="icon">
+                                            <i class="fa fa-history"></i>
+                                        </span>
+                                        <h6 class="subtitle is-6">{moment(movie.release_date).format('LL')}</h6>
+                                    </div>
+                                    <div className="resume">
+                                        <div className="subtitle is-5 crop">{movie.overview}</div>
                                     </div>
                                 </div>
-                            ))
+                                <div className="flex">
+                                    <figure class="image is-128x128">
+                                        {movie.poster_path ? 
+                                        <img src={this.getImage(movie.poster_path)}/>
+                                        : <img src={no_pic}/>
+                                        }
+                                    </figure>
+                                </div>
+                            </div>
+                        ))
+                    :
+                    !this.state.loading ?
+                        <article class="message is-danger">
+                            <div class="message-body">
+                                No movie found with that name :'(
+                            </div>
+                        </article>
                         :
-                        !this.state.loading ?
-                            <article class="message is-danger">
-                                <div class="message-body">
-                                    No movie found with that name :'(
-                                </div>
-                            </article>
-                            :
-                            null
-                        }
-                        { this.state.loading ?
-                            <div style={{marginLeft: '40%'}}>
-                                <figure class="image is-64x64">
-                                    <img src={load} />
-                                </figure>
-                            </div> 
-                            :
-                            null
-                        }
+                        null
+                    }
+                    { this.state.loading ?
+                        <div style={{marginLeft: '40%'}}>
+                            <figure class="image is-64x64">
+                                <img src={load} />
+                            </figure>
+                        </div> 
+                        :
+                        null
+                    }
                 </div>
                 <div className="movieDetail">
                     <div className={"modal " + (this.state.isModal ? 'is-active': '')}>
